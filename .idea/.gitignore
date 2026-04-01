@@ -5,8 +5,6 @@
 __pycache__/
 *.pyc
 
-# Pickle files (large model files)
-*.pkl
 
 # Streamlit secrets
 .streamlit/secrets.toml
