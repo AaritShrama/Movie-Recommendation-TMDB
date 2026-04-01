@@ -4,6 +4,11 @@ import streamlit as st
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import base64
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+API_KEY = os.getenv("TMDB_API_KEY")
 
 movies = pickle.load(open('movie_list.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
@@ -84,7 +89,7 @@ session = create_session()
 # ── Fetch poster from TMDB ───────────────────────────────────────────────────
 def fetch_poster(movie_id):
     try:
-        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=31fbe7fad2b13d9f58885ac581f6bd6e"
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}"
         data = session.get(url, timeout=10)
         data.raise_for_status()
         json_data = data.json()
