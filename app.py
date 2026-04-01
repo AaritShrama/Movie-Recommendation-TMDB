@@ -4,11 +4,8 @@ import streamlit as st
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import base64
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
-API_KEY = os.getenv("TMDB_API_KEY")
+API_KEY = st.secrets["TMDB_API_KEY"]
 
 movies = pickle.load(open('movie_list.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
@@ -116,7 +113,7 @@ def recommend(movie):
 
 
 # ── App ──────────────────────────────────────────────────────────────────────
-set_background(r"C:\Users\Aarit\OneDrive\Desktop\End2EndProjects\DATABASES\MOVIE RECOMMENDATIONS\86f199d0c6f5cedd14c121164fa5fafc.webp")
+set_background("86f199d0c6f5cedd14c121164fa5fafc.webp")
 
 st.title("🎬 Movie Recommendation System")
 
